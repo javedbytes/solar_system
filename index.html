@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Interactive Solar System — Learning Demo</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- ===== Left: Simulation stage ===== -->
+    <main id="stage-wrap">
+      <header id="topbar">
+        <h1>🪐 Interactive Solar System</h1>
+        <div class="hint">Click any planet (or the Sun) to learn about it. Not to scale.</div>
+      </header>
+
+      <canvas id="stage" aria-label="Solar system animation"></canvas>
+
+      <!-- Controls -->
+      <footer id="controls">
+        <button id="btn-play" class="ctrl primary" title="Play / Pause (Space)">⏸ Pause</button>
+        <button id="btn-reset" class="ctrl" title="Reset simulation">↺ Reset</button>
+
+        <div class="speed-group">
+          <label for="speed-slider">Speed</label>
+          <input type="range" id="speed-slider" min="0.25" max="20" step="0.25" value="4" />
+          <span id="speed-value" class="speed-readout">4×</span>
+        </div>
+
+        <div class="toggle-group">
+          <label><input type="checkbox" id="chk-orbits" checked /> Orbits</label>
+          <label><input type="checkbox" id="chk-labels" checked /> Labels</label>
+        </div>
+
+        <div class="date-readout" id="date-readout">Elapsed: 0.0 Earth years</div>
+      </footer>
+    </main>
+
+    <!-- ===== Right: Info panel ===== -->
+    <aside id="info-panel">
+      <div id="info-default">
+        <h2>Planet Info</h2>
+        <p>Select a celestial body on the left to see its details here.</p>
+        <ul class="quick-facts">
+          <li><b>8 planets</b> orbit the Sun</li>
+          <li>Inner rocky worlds: Mercury, Venus, Earth, Mars</li>
+          <li>Gas &amp; ice giants: Jupiter, Saturn, Uranus, Neptune</li>
+          <li>Farther planets move slower and have longer years (Kepler's laws)</li>
+        </ul>
+      </div>
+
+      <div id="info-card" hidden>
+        <div id="info-swatch"></div>
+        <h2 id="info-name">—</h2>
+        <div id="info-type" class="type-badge">—</div>
+        <dl>
+          <div class="row"><dt>Diameter</dt><dd id="info-size">—</dd></div>
+          <div class="row"><dt>Distance from Sun</dt><dd id="info-dist">—</dd></div>
+          <div class="row"><dt>Orbital period</dt><dd id="info-period">—</dd></div>
+          <div class="row"><dt>Day length</dt><dd id="info-day">—</dd></div>
+          <div class="row"><dt>Moons</dt><dd id="info-moons">—</dd></div>
+        </dl>
+        <p id="info-desc">—</p>
+        <button id="info-close" class="ctrl">✕ Close</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
